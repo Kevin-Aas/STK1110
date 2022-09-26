@@ -1,6 +1,7 @@
 # Leser data fra web:
 url <- "https://www.uio.no/studier/emner/matnat/math/STK1110/data/exe7_04.txt"
 IQ.data <- read.table(url, header = TRUE)
+print(IQ.data)
 
 IQ.menn <- IQ.data$VERBIQ[IQ.data$mf == "male"]
 IQ.kvinner <- IQ.data$VERBIQ[IQ.data$mf == "female"]
