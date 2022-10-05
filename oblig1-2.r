@@ -1,5 +1,4 @@
 data = c(525,587,547,558,591,531,571,551,566,622,561,502,556,565,562)
-
 n = length(data)
 
 # a)
@@ -13,7 +12,6 @@ print(mean(data) + 2.145*sd(data)/sqrt(n))
 # b)
 set.seed(1)
 m <- 10000
-conf_list <- c()
 count <- 0
 for (i in 1:m) {
     sim_data <- rnorm(n, 558, 30)
@@ -25,14 +23,11 @@ for (i in 1:m) {
     if (conf_low < 558 && conf_hig > 558) {
         count <- count + 1
     }
-    conf     <- c(conf_low, conf_hig)
-    conf_list <- c(conf_list, conf, "|")
 }
 print(count)
 
 # c)
 m <- 10000
-conf_list <- c()
 count <- 0
 for (i in 1:m) {
     sim_data <- rnorm(n, 558, 30)
@@ -43,33 +38,27 @@ for (i in 1:m) {
     if (conf_low < 558 && conf_hig > 558) {
         count <- count + 1
     }
-    conf     <- c(conf_low, conf_hig)
-    conf_list <- c(conf_list, conf, "|")
 }
 print(count)
 
 # d)
 m <- 10000
-conf_list <- c()
 count <- 0
 for (i in 1:m) {
     sim_data <- rnorm(n, 558, 30)
     sim_sd   <- sd(sim_data)
-    chi_low  <- qchisq(p=0.05/2, df=n-1, lower.tail=FALSE)
-    chi_high <- qchisq(p=1-(0.05/2), df=n-1, lower.tail=FALSE)
+    chi_low  <- 26.119
+    chi_high <- 5.692
     conf_low <- sqrt((n-1) / chi_low * sim_sd^2)
     conf_hig <- sqrt((n-1) / chi_high * sim_sd^2)
     if (conf_low < 30 && conf_hig > 30) {
         count <- count + 1
     }
-    conf     <- c(conf_low, conf_hig)
-    conf_list <- c(conf_list, conf, "|")
 }
 print(count)
 
 # e)
 m <- 10000
-conf_list <- c()
 count <- 0
 for (i in 1:m){
     n = 15
@@ -83,8 +72,6 @@ for (i in 1:m){
     if (conf_low < 558 && conf_hig > 558) {
         count <- count + 1
     }
-    conf     <- c(conf_low, conf_hig)
-    conf_list <- c(conf_list, conf, "|")
 }
 print(count)
 
