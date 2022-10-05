@@ -1,4 +1,5 @@
 data = c(525,587,547,558,591,531,571,551,566,622,561,502,556,565,562)
+
 n = length(data)
 
 # a)
@@ -27,6 +28,7 @@ for (i in 1:m) {
 print(count)
 
 # c)
+set.seed(1)
 m <- 10000
 count <- 0
 for (i in 1:m) {
@@ -42,6 +44,7 @@ for (i in 1:m) {
 print(count)
 
 # d)
+set.seed(1)
 m <- 10000
 count <- 0
 for (i in 1:m) {
@@ -58,6 +61,7 @@ for (i in 1:m) {
 print(count)
 
 # e)
+set.seed(1)
 m <- 10000
 count <- 0
 for (i in 1:m){
@@ -76,16 +80,16 @@ for (i in 1:m){
 print(count)
 
 # f)
+set.seed(1)
 m <- 10000
-conf_list <- c()
 count <- 0
 for (i in 1:m) {
     n = 15
     tdist  <- rt(n, df=7)
     xdist  <- 558 + 30 * tdist
     x_sd   <- sd(xdist)
-    chi_low  <- qchisq(p=0.05/2, df=n-1, lower.tail=FALSE)
-    chi_high <- qchisq(p=1-(0.05/2), df=n-1, lower.tail=FALSE)
+    chi_low  <- 26.119
+    chi_high <- 5.692
     conf_low <- sqrt((n-1) / chi_low * x_sd^2)
     conf_hig <- sqrt((n-1) / chi_high * x_sd^2)
     if (conf_low < sqrt(1.4)*30 && conf_hig > sqrt(1.4)*30) {
