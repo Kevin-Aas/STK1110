@@ -91,7 +91,5 @@ for (i in 1:m) {
     if (conf_low < sqrt(1.4)*30 && conf_hig > sqrt(1.4)*30) {
         count <- count + 1
     }
-    conf     <- c(conf_low, conf_hig)
-    conf_list <- c(conf_list, conf, "|")
 }
 print(count)
