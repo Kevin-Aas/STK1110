@@ -32,18 +32,18 @@ B = 1000
 data_mean_boot = c()
 for (i in 1:B){
     data_boot = c()
-    for (i in 1:length(data)){ # nolint
+    for (i in 1:n){
         krav = sample(data, 1)
         data_boot = append(data_boot, krav)
     }
     data_mean_boot = append(data_mean_boot, mean(data_boot))
 }
-data_mean_boot = log(data_mean_boot)
-hist(data_mean_boot)
-print(sqrt(1/(B-1) * sum((data_mean_boot - mean(data_mean_boot))^2)))
-print(sd(data)/length(data))
+print(mean(exp(data_mean_boot)))
+print(sd(exp(data_mean_boot)))
+print(mean(data))
+print(sd(data)/sqrt(n))
 
-#Bootstrap mean
+#Bootstrap sd
 B = 1000
 data_sd_boot = c()
 for (i in 1:B){
@@ -52,9 +52,8 @@ for (i in 1:B){
         krav = sample(data, 1)
         data_boot = append(data_boot, krav)
     }
-    data_sd_boot = append(data_sd_boot, mean(data_boot))
+    data_sd_boot = append(data_sd_boot, sd(data_boot))
 }
-hist(data_sd_boot)
 print(sd(data_sd_boot))
 print(sqrt(2/length(data)) * sd(data)^2)
 
