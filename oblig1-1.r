@@ -15,8 +15,10 @@ print(sum((data - mean(data))^2) / length(data))
 print(sd(data))
 print(length(data))
 print(1.960*sd(data)/sqrt(n))
-print((n-1)/6600 * sd(data)^2)
-print((n-1)/24.443 * sd(data)^2)
+chi_low = qchisq(p=.025, df=6376, lower.tail=FALSE)
+chi_high = qchisq(p=.975, df=6376, lower.tail=FALSE)
+print((n-1)/chi_low * sd(data)^2)
+print((n-1)/chi_high * sd(data)^2)
 
 #qqplot av logaritmen til data
 qqnorm(log(data))
